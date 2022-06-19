@@ -1,34 +1,7 @@
-use restaurant;
-SELECT department_id, COUNT(id) AS `Number of employees`
-FROM employees
-GROUP BY department_id
-ORDER BY department_id, `Number of employees`;
-
--- 2.	Average Salary
-SELECT department_id, round(AVG(salary),2)
-FROM employees
-GROUP BY department_id;
-
--- 3.	 Min Salary
-SELECT department_id, round(min(salary),2) as min_salary
-FROM employees
-GROUP BY department_id
-HAVING min_salary>800;
-
--- 4.	 Appetizers Count
-SELECT count(id) FROM products
-WHERE category_id=2 AND price>8;
-
--- 5.	 Menu Prices
-SELECT category_id,  
-round(avg(price),2) as 'Average Price',
-round(min(price),2) as 'Cheapest Product',
-round(max(price),2) as 'Most Expensive Product'
-FROM products
-GROUP BY category_id;
 
 -- Exercises
-USE `gringotts`;
+
+-- USE `gringotts`;
 SELECT count(id) FROM wizzard_deposits;
 
 --  Longest Magic Wand
@@ -70,9 +43,9 @@ HAVING total_sum<150000
 ORDER BY total_sum DESC;
 
 -- 8.	 Deposit charge
-SELECT deposit_group,magic_wand_creator, min(deposit_charge)
-FROM `wizzard_deposits`
-GROUP BY deposit_group,magic_wand_creator
+SELECT deposit_group, magic_wand_creator,min(deposit_charge) as min_deposit_charge
+FROM wizzard_deposits
+GROUP BY deposit_group, magic_wand_creator
 ORDER BY magic_wand_creator,deposit_group;
 
 -- 9. Age Groups
@@ -99,7 +72,7 @@ GROUP BY first_letter
 ORDER BY first_letter;
 
 -- 11.	Average Interest 
-SELECT deposit_group,is_deposit_expired,avg(deposit_interest)
+SELECT deposit_group,is_deposit_expired, avg(deposit_interest) as average_interest
 FROM wizzard_deposits
 WHERE deposit_start_date>'1985-01-01'
 GROUP BY deposit_group,is_deposit_expired
@@ -116,10 +89,10 @@ FROM
 	)
   ) AS `diff_current_next`
   FROM wizzard_deposits wd1 
-)AS cq;
+)AS sum_difference;
 
 -- 13.	 Employees Minimum Salaries
-USE `soft_uni`;
+-- USE `soft_uni`;
 SELECT department_id,min(salary) as minimum_salary
 FROM employees
 WHERE year(hire_date)>1999 AND department_id IN (2,5,7)
@@ -154,11 +127,13 @@ WHERE manager_id is NULL;
 
 -- 17.	3rd Highest Salary* 
 SELECT department_id,
-(SELECT DISTINCT e2.salary 
-FROM employees e2
-WHERE e2.department_id=e1.department_id
-ORDER BY e2.salary DESC
-LIMIT 2,1) as `third_highest_salary`
+(
+	SELECT DISTINCT e2.salary 
+	FROM employees e2
+	WHERE e2.department_id=e1.department_id
+	ORDER BY e2.salary DESC
+	LIMIT 2,1
+) as `third_highest_salary`
 FROM employees e1
 GROUP BY department_id
 HAVING `third_highest_salary` IS NOT NULL;
