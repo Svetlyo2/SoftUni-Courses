@@ -1,110 +1,7 @@
-USE `soft_uni`;
--- SET GLOBAL log_bin_trust_function_creators = 1; if you ger error 1418
--- 1.	Count Employees by Town
-DELIMITER $$
-CREATE FUNCTION ufn_count_employees_by_town(town_name VARCHAR (20))
-RETURNS INT(11)
-BEGIN
-	DECLARE e_count INT;
-	SET e_count:=(
-    SELECT COUNT(employee_id) FROM employees as e
-	JOIN addresses as a 
-    ON a.address_id=e.address_id
-    JOIN towns as t 
-    ON t.town_id=a.town_id
-    WHERE t.name=town_name
-    );
-	RETURN e_count;
-END;
-$$
-DELIMITER ;
-CALL ufn_count_employees_by_town('Sofia');
--- Demo
-SELECT ufn_count_employees_by_town('Sofia') AS 'count';
-
--- 2.	Employees Promotion
-DELIMITER $$
-CREATE PROCEDURE usp_raise_salaries(department_name VARCHAR(20))
-BEGIN
-UPDATE employees e
-JOIN departments d
-ON d.department_id=e.department_id
-SET e.salary=e.salary*1.05
-WHERE d.name=department_name;
-END
-$$
-DELIMITER ;
-CALL usp_raise_salaries('Engineering');
-
--- 3.	Employees Promotion By ID
--- w/o transaction
-DELIMITER $$
-CREATE PROCEDURE usp_raise_salary_by_id(id INT)
-BEGIN
-UPDATE employees e
-SET e.salary=e.salary*1.05
-WHERE e.employee_id=id;
-END $$
-DELIMITER ;
-
--- -- With transaction
-DELIMITER $$
-CREATE PROCEDURE usp_raise_salary_by_id(id INT)
-BEGIN
-	START TRANSACTION;
-    IF ((SELECT COUNT(employee_id)
-    FROM employees e WHERE e.employee_id LIKE id)<>1) 
-    THEN ROLLBACK;
-    ELSE
-		UPDATE employees e
-		SET e.salary=e.salary*1.05
-		WHERE e.employee_id=id;
-	END IF;
-END $$
-CALL usp_raise_salary_by_id (2);
-DELIMITER ;
-
--- 4.	Triggered
-CREATE TABLE deleted_employees (
-employee_id INT(11) PRIMARY KEY AUTO_INCREMENT,
-first_name VARCHAR(20),
-last_name VARCHAR(20),
-middle_name VARCHAR(20),
-job_title VARCHAR(50),
-department_id INT,
-salary DOUBLE
-);
-DELIMITER $$
-CREATE TRIGGER tr_deleted_employees
-AFTER DELETE
-ON employees
-FOR EACH ROW
-BEGIN
-	INSERT INTO deleted_employees (first_name,last_name,
-    middle_name,job_title,department_id,salary)
-    VALUES(OLD.first_name,OLD.last_name,OLD.middle_name,
-    OLD.job_title,OLD.department_id,OLD.salary);
-END $$
-SET foreign_key_checks = 0; --dangerous
-DELETE FROM employees WHERE employee_id=1;
-SET foreign_key_checks = 1; 
-
--- Examples from presentation
-DELIMITER $$
-CREATE PROCEDURE usp_add_numbers (
-first_number INT,second_number INT, OUT result INT)
-BEGIN
-	SET result:=first_number+second_number;
-END
-$$
--- DELIMITER ; -- added to change delimiter for next rows
-
--- SET @result=0;
--- CALL usp_add_numbers(4,5,@result);
--- SELECT @result as `result`;
--- DROP PROCEDURE usp_add_numbers;
+-- Part I – Queries for SoftUni Database
 
 -- Exercises 1.	Employees with Salary Above 35000
+-- USE `soft_uni`;
 DELIMITER $$
 CREATE PROCEDURE usp_get_employees_salary_above_35000 ()
 BEGIN
@@ -114,7 +11,7 @@ BEGIN
     ORDER BY first_name,last_name,employee_id;
 END
 $$
-CALL usp_get_employees_salary_above_35000();
+-- CALL usp_get_employees_salary_above_35000();
 
 -- 2.	Employees with Salary Above Number
 DELIMITER $$
@@ -128,6 +25,7 @@ END
 $$
 -- CALL usp_get_employees_salary_above(48100);
 -- DROP PROCEDURE IF EXISTS usp_get_employees_salary_above;
+
 -- 3.	Town Names Starting With
 DELIMITER $$  - not acceptable for judge
 CREATE PROCEDURE usp_get_towns_starting_with (start_string VARCHAR(20))
@@ -190,7 +88,8 @@ BEGIN
         SET level := 'High';
     END IF;
     RETURN level;
-END $$
+END 
+$$
 DELIMITER ;
 
 DELIMITER $$
@@ -204,9 +103,10 @@ BEGIN
 		ELSE SET level := 'High';
     END CASE;
     RETURN level;
-END $$
+END 
+$$
 DELIMITER ;
-SELECT ufn_get_salary_level(43300);
+-- SELECT ufn_get_salary_level(43300);
 
 -- 6.	Employees by Salary Level
 DELIMITER $$
@@ -230,7 +130,8 @@ BEGIN
     FROM `employees` AS e
     WHERE ufn_get_salary_level(e.salary) = salary_level
     ORDER BY e.first_name DESC, e.last_name DESC;
-END $$
+END 
+$$
 DELIMITER ;
 
 -- 7.	Define Function
@@ -238,9 +139,9 @@ CREATE FUNCTION ufn_is_word_comprised(set_of_letters varchar(50), word varchar(5
 RETURNS BIT
 RETURN lower(word) REGEXP (concat('^[', lower(set_of_letters),']+$'));
 
-SELECT ufn_is_word_comprised('oistmiahf', 'Sofia');
-SELECT ufn_is_word_comprised('oistmiahf', 'halves');
-SELECT ufn_is_word_comprised('bobr', 'Rob');
+-- SELECT ufn_is_word_comprised('oistmiahf', 'Sofia');
+-- SELECT ufn_is_word_comprised('oistmiahf', 'halves');
+-- SELECT ufn_is_word_comprised('bobr', 'Rob');
 
 -- using loops
 DELIMITER $$
@@ -259,9 +160,12 @@ BEGIN
 	UNTIL result = 0 OR counter = CHAR_LENGTH(word) + 1
 	END REPEAT;
 	RETURN result;
-END $$
+END 
+$$
+
+-- PART II – Queries for Bank Database
 -- 8.	Find Full Name
-USE `bank`;
+-- USE `bank`;
 DELIMITER $$
 CREATE PROCEDURE usp_get_holders_full_name()
 BEGIN
@@ -295,6 +199,9 @@ RETURNS DECIMAL(20,4)
 BEGIN
 	RETURN initial_sum*power((1+interest_rate), years);
 END;
+
+-- using variable
+
 /*CREATE FUNCTION ufn_calculate_future_value(total DECIMAL(20,4), rate DECIMAL(15,4), years INT)
 returns DECIMAL(20,4)
 BEGIN 
@@ -367,10 +274,12 @@ BEGIN
 			COMMIT;
 		END IF;
 	END IF;
-END $$
+END 
+$$
 DELIMITER ;
 
--- using CASE
+-- using CASE:
+
 DELIMITER $$
 CREATE PROCEDURE usp_withdraw_money(account_id INT, money_amount DECIMAL(20,4))
 BEGIN
@@ -387,7 +296,8 @@ START TRANSACTION;
 	END CASE;
 COMMIT;
 END
-END $$
+END 
+$$
 DELIMITER ;
 -- CALL usp_withdraw_money(1,10);
 -- SELECT id,account_holder_id,balance FROM accounts a
@@ -422,53 +332,12 @@ BEGIN
 			COMMIT;
 		END IF;
 	END IF;
-END $$
+END
+$$
 DELIMITER ;
-CALL usp_transfer_money(1,2,10);
-SELECT id,account_holder_id,balance FROM accounts a
-WHERE a.id<3;
-
--- another solution
-DELIMITER $$
-CREATE PROCEDURE usp_transfer_money(
-    from_account_id INT, to_account_id INT, money_amount DECIMAL(19, 4))
-BEGIN
-    IF money_amount > 0 
-        AND from_account_id <> to_account_id 
-        AND (SELECT a.id 
-            FROM `accounts` AS a 
-            WHERE a.id = to_account_id) IS NOT NULL
-        AND (SELECT a.id 
-            FROM `accounts` AS a 
-            WHERE a.id = from_account_id) IS NOT NULL
-        AND (SELECT a.balance 
-            FROM `accounts` AS a 
-            WHERE a.id = from_account_id) >= money_amount
-    THEN
-        START TRANSACTION;
-        
-        UPDATE `accounts` AS a 
-        SET 
-            a.balance = a.balance + money_amount
-        WHERE
-            a.id = to_account_id;
-            
-        UPDATE `accounts` AS a 
-        SET 
-            a.balance = a.balance - money_amount
-        WHERE
-            a.id = from_account_id;
-        
-        IF (SELECT a.balance 
-            FROM `accounts` AS a 
-            WHERE a.id = from_account_id) < 0
-            THEN ROLLBACK;
-        ELSE
-            COMMIT;
-        END IF;
-    END IF;
-END $$
-DELIMITER ;
+-- CALL usp_transfer_money(1,2,10);
+/*SELECT id,account_holder_id,balance FROM accounts a
+WHERE a.id<3;*/
 
 -- 15.	Log Accounts Trigger
 CREATE TABLE logs(
@@ -529,6 +398,7 @@ BEGIN
     concat('On ',DATE_FORMAT(NOW(), '%b %d %Y at %r'), 
     ' your balance was changed from ',NEW.old_sum,' to ',
     NEW.new_sum,'.'));
-END $$
+END 
+$$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `bank`.tr_create_email;
