@@ -1,0 +1,23 @@
+@import "https://use.fontawesome.com/releases/v5.14.0/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato&display=swap');
+/*.buttons-container{*/
+/*    padding: 40px;*/
+/*}*/
+.btn {
+    font-family: Lato, sans-serif;
+    padding: 17px 34px;
+    border-radius: 5px;
+    line-height: 5;
+    color: #fff;
+    font-size: 21px;
+}
+.click-btn{
+    background-color: #008000;
+}
+
+.email-btn{
+    background-color: #FF8C00;
+}
+.btn i{
+    margin-right: 5px;
+}

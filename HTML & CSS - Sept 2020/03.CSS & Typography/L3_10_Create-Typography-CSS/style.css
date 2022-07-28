@@ -1,0 +1,55 @@
+
+html{
+    font-family: Helvetica, sans-serif;
+    line-height: 1.5;
+}
+.heading{
+    font-family: Georgia, serif;
+}
+.list-square{
+    list-style-type: square;
+}
+.list-circle{
+    list-style-type: circle;
+}
+.list-disc{
+    list-style-type: disc;
+}
+
+.table{
+    width: 100%;
+}
+
+
+tr:nth-child(odd) {
+    background-color:rgb(241,241,241);
+}
+tr:nth-child(odd) td{
+    background-color:rgb(241,241,241);
+}
+
+table,td,th {
+    border-width: 1px;
+    border-color: rgb(221,221,221);
+    border-style: solid;
+}
+th{
+    background-color: #CCCCCC;
+    text-align: left;
+}
+
+
+tr:hover {
+    background-color: rgb(0,0,0);
+    color: rgb(255,255,255);
+}
+
+blockquote{
+    border-left: 3px solid rgb(221,221,221);
+    font-style: italic;
+    padding-left: 20px;
+    padding-bottom: 30px;
+}
+.author{
+    text-align: right;
+}
