@@ -1,0 +1,23 @@
+body{
+    background-color: #EEEEEE;
+    /*border: 1px solid;*/
+    /*width: 80%;*/
+    margin: 5% 9%;
+}
+.gallery{
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 115px;
+    display: inline;
+
+}
+.gallery-items{
+    border: 0.4rem solid black;
+    vertical-align: middle;
+    max-width: 300px;
+    margin: 0 5px;
+}
+li{
+    margin-bottom: 13px;
+    display: inline-block;
+}

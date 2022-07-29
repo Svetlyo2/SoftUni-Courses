@@ -1,0 +1,33 @@
+
+html{
+    font-family: Helvetica, sans-serif;
+}
+body{
+    width: 90%;
+    margin: 0 auto;
+}
+.nav-container{
+    font-family: Georgia, sans-serif;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+body>header *{
+    display: inline-block;
+}
+hr{
+    border-bottom: 1px solid;
+}
+
+.nav-item.li{
+    margin-left: 20px;
+    color: #A5A600;
+}
+
+.title{
+     color: black;
+     font-weight: bold;
+     font-size: 40px;
+     margin-right: 170px;
+    margin-left: 0;
+ }
