@@ -1,0 +1,54 @@
+@import "https://use.fontawesome.com/releases/v5.14.0/css/all.css";
+
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.viewport{
+    min-height: 615px;
+    position: relative;
+
+}
+.first{
+    background-image: linear-gradient(to right, #195B9E, #42CDA2);
+}
+.second{
+    background-image: linear-gradient(to right, #A93378 , #D38212);
+}
+.viewport img{
+    width:380px;
+
+}
+
+.card{
+    color: #fff;
+    display: block;
+    position: absolute;
+
+}
+.top-sec{
+    top: 200px;
+    left: 500px;
+}
+.bottom-sec{
+    top: 26px;
+    left: 500px;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+
+.icon{
+    left: 93%;
+    bottom: 10px;
+    font-size: 20px;
+}
+
