@@ -1,0 +1,34 @@
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+body{
+    margin: 0;
+}
+html{
+    font-family: Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+h2{
+    font-family: Georgia, serif;
+    font-size: 1em;
+    line-height: 1.2;
+}
+section{
+    display: flex;
+    margin: 9rem auto;
+    justify-content: space-between;
+    max-width: 70vw;
+    align-content: center;
+}
+article{
+    /*max-width: 20vw;*/
+    flex-basis: 28%;
+}

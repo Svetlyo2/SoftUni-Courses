@@ -1,0 +1,68 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+body{
+    margin: 2rem 11rem;
+}
+html{
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+}
+.container{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    max-width: 15vw;
+    height: 26rem;
+
+}
+span {
+    border: 1px solid #000;
+    padding: 13px 0;
+    width: 5rem;
+    margin: 5px;
+    text-align: center;
+}
+
+.s1{
+    order: 1;
+}
+.s2{
+    order: 2;
+}
+.s3{
+    order: 3;
+}
+.s4{
+    order: 4;
+}
+.s5{
+    order: 5;
+}
+.s6{
+    order: 6;
+}
+.s7{
+    order: 7;
+}
+.s8{
+    order: 8;
+}
+.s9{
+    order: 9;
+}
+.s10{
+    order: 10;
+}
+.s11{
+    order: 11;
+}
+.s12{
+    order: 12;
+}
