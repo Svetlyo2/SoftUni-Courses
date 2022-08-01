@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body{
+    display: flex;
+    padding: 3rem;
+    background-color: lightgray;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /*stretch -the remainder of the "width" will be distributed evenly around (horizontally) every "li" element*/
+}
+li{
+    list-style: none;
+    display: flex;
+    flex-basis: 27%;/*analog to "width", but this is used in flex*/
+    align-items: center;/* instead of default "stretch", which makes all direct children have the same height, this centers*/
+    /*the children. Tallest child is not changed, but all shorter ones are centered based on the tallest child*/
+    /*justify-content: center; every direct child will have the same amount of space before and after it horizontally*/
+
+    padding: 1em;
+    margin: 1em;
+    border: 0.25em solid;
+    box-shadow: 0 0 0.5em black;
+    background-color: white;
+}

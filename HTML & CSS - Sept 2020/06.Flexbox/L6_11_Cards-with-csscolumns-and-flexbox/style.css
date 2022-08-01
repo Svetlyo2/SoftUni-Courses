@@ -1,0 +1,47 @@
+body{
+    background-color: rgb(238,238,238);
+    max-width: 66%;
+    margin: 0 auto;
+}
+.cards-layout{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+.masonry div.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 120vw;
+}
+.flex div.container{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+
+}
+
+div.card{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+    max-width: 30%;
+
+}
+.content{
+    padding: 1rem;
+}
+
+.details{
+    padding-top: 1rem;
+    border-top: 2px solid grey;
+    margin: 0;
+}
+
+.row{
+    display: flex;
+    max-width: inherit;
+}

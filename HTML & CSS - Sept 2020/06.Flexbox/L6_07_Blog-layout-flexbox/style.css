@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+.page{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+body{
+    font-family: Helvetica, sans-serif;
+    background-color: rgb(238,238,238);
+    margin: 5rem 10rem;
+}
+header{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    border-bottom: 2px solid;
+    flex-grow: 1;
+}
+main{
+    display: flex;
+}
+.content{
+    flex-basis: 70%;
+}
+p{
+    margin-bottom: 1rem;
+}
+img{
+    background-color: rgb(255,255,255);
+    border: 0.25em solid;
+    box-shadow: 0 0 0.5em black;
+    padding: 1em;
+}
+
+img.right {
+    margin: 0 0 2em 2em;
+    float: right;
+}
+img.left{
+    margin: 0 2em 2em 0;
+    float: left;
+}
+
+h1,h2,h3{
+    font-family: Georgia, serif;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+article{
+    line-height: 1.5;
+}
+.inline{
+    display: flex;
+}
+.inline p{
+    flex-basis: 55%;
+    border-right: 2px solid #808080;
+}
+
+blockquote{
+    font-family: Georgia, serif;
+    flex-basis: 45%;
+    margin: 0;
+    padding-left: 2rem;
+}
+.author{
+    margin-top: 2rem;
+    text-align: right;
+}
+aside{
+    margin-left: 4rem;
+}
+aside ul{
+    margin-left: 2rem;
+}
+
+aside a{
+    text-decoration: none;
+    color: rgb(0,153,0);
+
+}
