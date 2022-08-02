@@ -1,0 +1,104 @@
+html{
+    font: 12px/1.5 Helvetica, sans-serif;
+}
+body{
+    background-color: #EBEBEB;
+    padding: 5rem;
+}
+header{
+     /*width: 80%;*/
+     /*margin: 30px auto;*/
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     border-bottom: 2px solid;
+ }
+
+.title{
+    min-width: 20vw;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 3rem;
+    margin: 0;
+    padding: 1rem 2rem;
+}
+p {
+    margin: 0;
+    padding-bottom: 1.5rem;
+}
+.nav-item{
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    background: #333;
+    margin: 5px;
+    color: #FFF;
+}
+.nav-item:hover{
+    background-color: #090;
+}
+#main-nav-toggle,
+#toggle {
+    display: none;
+}
+#toggle {
+    position: relative;
+    flex: 1 0 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+#toggle:before {
+    display: block;
+    content: '';
+    position: relative;
+    padding-right: 0.3rem;
+    font-weight: bold;
+}
+@media screen and (max-width: 800px) {
+
+    #toggle {
+        display: flex;
+        margin: 0 auto;
+    }
+
+    nav {
+        display: none;
+        border-top: 2px solid #000;
+    }
+
+    .nav-item:not(:first-child) {
+        padding-top: 0.5rem;
+    }
+
+    #main-nav-toggle:checked + header nav {
+        display: block;
+        flex: 1 0 100%;
+    }
+
+    #main-nav-toggle:checked + header #toggle:before {
+        content: 'X';
+    }
+    .nav-item{
+        position: relative;
+        width: 100%;
+        left: -35px;
+    }
+
+}
+
+@media screen and (min-width: 800px) {
+
+    .nav-list {
+        display: flex;
+        flex-basis: 100%;
+    }
+
+    .nav-item:hover {
+        display: block;
+        flex-basis: 100%;
+    }
+}

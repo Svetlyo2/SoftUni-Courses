@@ -1,0 +1,17 @@
+
+body {
+    margin: 2em;
+    background: #EEE;
+}
+
+.page {
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.page > header:first-of-type {
+    border-bottom: 2px solid #000;
+}
+
+
+
