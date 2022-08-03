@@ -1,0 +1,119 @@
+@import "https://use.fontawesome.com/releases/v5.14.0/css/all.css";
+
+html{
+    font-family: Helvetica, sans-serif;
+}
+body{
+    padding: 5rem 2rem;
+}
+
+.login-form{
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.login-form fieldset,
+.login-form legend{
+    border: 1px solid #878787;
+    background-color: #F8F8F8;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 1rem 0.1rem rgba(0,0,0,0.1);
+}
+fieldset{
+    padding: 2.5em 2em 2em 2em;
+    position: relative;
+}
+
+.login-form legend{
+    width: 30%;
+    position: absolute;
+    top: -26px;
+    left: -1px;
+    padding: 0.5rem 1rem;
+
+}
+p {
+    margin: 0;
+    padding-bottom: 1.5rem;
+}
+.login-form label{
+    font-weight: bold;
+}
+.field .input{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.input input:after {
+    display: block;
+    content: 'AAAA';
+}
+
+.field .input input {
+    border: none;
+    flex: 1 1 auto;
+    padding: 0.8rem 2rem;
+    outline: none;
+    background: transparent;
+    z-index: 2;
+    order: 2;
+}
+
+.field .input .fas {
+    z-index: 3;
+    position: absolute;
+    padding: 0 0 0 0.8rem;
+    font-size: 0.9em;
+    order: 1;
+}
+
+.actions{
+    display: block;
+    background: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 0.3rem;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+}
+
+.input input:focus + .actions {
+    border-color: #090;
+}
+
+.input input:focus + .actions + .fas {
+    color: #090;
+}
+input[type='submit'].btn {
+    background-color: black;
+    color: white;
+    border-style: none;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 0.25em;
+    width: 6em;
+    position: relative;
+    left: 0%;
+
+}
+
+@media screen and (min-width: 800px) {
+    html {
+        font-size: 18px;
+    }
+
+    .field {
+        display: flex;
+    }
+
+    .field .input {
+        flex: 1 0 auto;
+    }
+
+    .field label {
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        padding-right: 0.5rem;
+    }
+}
