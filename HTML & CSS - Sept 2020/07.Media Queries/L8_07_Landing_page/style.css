@@ -1,0 +1,212 @@
+@import "https://use.fontawesome.com/releases/v5.14.0/css/all.css";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+body {
+    margin: 3em auto;
+    width: 90%;
+}
+h1, h2, h3 {
+    font-family: Georgia, serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    /*flex-wrap: wrap;*/
+    align-items: center;
+}
+#main-nav{
+    display: flex;
+    font-weight: bold;
+}
+
+#nav-toggle,
+#toggle {
+    display: none;
+}
+.title h2{
+    color: #800080;
+    font-size: 35px;
+}
+.title p{
+    color: #4a4949;
+    font-size: 12px;
+    letter-spacing: -1px;
+}
+.nav-list{
+    display: flex;
+}
+.nav-item{
+    display: block;
+    padding: 0.5rem 0.5rem;
+    text-decoration: none;
+    margin-left: 11px;
+    color: #4a4949;
+}
+.nav-item:hover{
+    background-color: #800080;
+}
+.need{
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.need img{
+    width: 18%;
+}
+.content{
+    flex-basis: 50%;
+}
+.content p{
+    padding: 2rem 0;
+}
+.content button{
+    background: transparent;
+    color: #333333;
+    border: 2px solid #333333;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+.team,
+.testimonials{
+    margin: 2rem 16%;
+}
+.team h2,
+.testimonials h2{
+    text-align: center;
+    padding-bottom: 2rem;
+}
+.cards-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.card img{
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.card .name{
+    font-weight: bold;
+}
+.card .description{
+   font-style: italic;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.sign-up{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #68347B;
+    padding: 1rem;
+
+}
+.sign-up h2{
+    color: white;
+}
+.line{
+    border-bottom: 2px solid;
+    width: 85px;
+}
+.sign-up *{
+    margin-bottom: 1rem;
+}
+.email-input{
+    display: flex;
+    width: 40%;
+    justify-content: center;
+}
+
+.email-input input{
+    padding: 6px 12px;
+    border: 1px solid #413346;
+    border-radius: 5px;
+}
+
+#email{
+    flex-basis: 60%;
+    margin-right: 6px;
+}
+.email-input > input.btn{
+    flex-basis: 25%;
+}
+.testimonials .line{
+    margin: 0 auto 3rem;
+}
+footer{
+    font-size: 12px;
+    display: flex;
+    max-width: 70%;
+    margin: 0 auto;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+footer section{
+    width: 30%;
+    margin: 1rem;
+    align-content: flex-start;
+    justify-content: left;
+}
+footer h2,h3,h4{
+    margin-bottom: 2rem;
+}
+footer h3,h4{
+    margin-bottom: 1rem;
+}
+.sitemap{
+    display: flex;
+    flex-wrap: wrap;
+    color: #413346;
+}
+.footer-nav{
+    display: flex;
+    flex-wrap: wrap;
+}
+.nav-col{
+    margin-right: 20px;
+    line-height: 1.5;
+}
+.footer-nav-item {
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.footer-nav-item.right{
+    padding-left: 19px;
+}
+@media screen and (max-width: 500px) {
+
+    #nav-toggle {
+        display: flex;
+        margin: 0 auto;
+    }
+
+    #main-nav {
+        display: none;
+        border-top: 2px solid #000;
+    }
+}
+/*@media screen and (min-width: 600px) { html { font-size: 8px } }*/
