@@ -1,0 +1,49 @@
+
+html{
+    font-family: Helvetica,serif;
+}
+body{
+    margin: 5rem 17rem;
+}
+h1,h2,h3,h4{
+    font-family: Georgia,sans-serif;
+}
+.title{
+    font-size: 46px;
+    margin-bottom: 12px;
+}
+.content,
+.btn-section{
+    display: flex;
+}
+.content section{
+    flex-basis: 47%;
+}
+.btn-section{
+    align-items: flex-end;
+}
+.start-btn{
+    background-color: #03A87C;
+    padding: 12px 56px;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    outline: transparent;
+    font-weight: bold;
+    font-size: 20px;
+}
+.bold{
+    font-weight: bold;
+}
+.mark{
+    background-color: #CEFDE9;
+}
+.details{
+    margin-bottom: 0;
+}
+.line{
+    padding: 0 10%;
+    border-bottom: 2px solid #898989;
+    max-width: 15%;
+    margin: 3rem auto;
+}
