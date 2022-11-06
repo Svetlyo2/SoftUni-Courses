@@ -32,6 +32,16 @@ public class ExtendedDatabaseTests {
 //        database.add(P3);
 //    }
 
+	@Test
+    public void canCreateDatabaseInstance() throws OperationNotSupportedException {
+        Database database = new Database(elements);
+        Person target = database.getElements()[0];
+        Assert.assertEquals(database.getClass().getSimpleName(), "Database");
+        Assert.assertEquals(database.getElements().length, 2);
+        Assert.assertEquals(target.getId(), 1);
+        Assert.assertEquals(target.getUsername(), "Pesho");
+    }
+
     @Test(expected = OperationNotSupportedException.class)
     public void throwsWhenUsernameNotFound() throws OperationNotSupportedException {
         Database database = new Database(elements);
