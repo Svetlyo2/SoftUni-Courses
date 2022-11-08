@@ -43,4 +43,9 @@ public class IteratorTests {
     public void printReturnsElementAtCurrentIndex() {
         Assert.assertEquals(iterator.print(), "Stefcho");
     }
+
+    @Test
+    public void printThrowsWithNoElements() throws IllegalStateException, OperationNotSupportedException {
+        ListIterator listIterator = new ListIterator("");
+    }
 }
